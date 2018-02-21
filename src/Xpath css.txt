@@ -1,0 +1,84 @@
+Syntax for XPath
+//tagname[@attribute='value']
+
+<input type="text" class="inputField medium">
+//input[@class='inputField medium']
+
+<input class="input r4 wide mb16 mt8 username" value="" name="username" id="username" style="display: block;" type="email">
+//input[@id='username']
+
+<label for="rememberUn" class="fl pr db tn3">Remember me</label>
+//label[@for='rememberUn']
+
+<input class="inputtext" name="email" id="email" tabindex="1" data-testid="royal_email" type="email">
+//input[@type='email']
+
+Syntax for CSS 
+tagname[attribute = 'value']
+
+<button type="button" class="actionButton"><div class="actionButtonText">Sign in</div></button>
+
+button[class='actionButton']
+.actionButton
+
+<input type="text" class="inputField medium">
+input[class='inputField medium']
+input.inputField:nth-child(3)
+
+Another sytax for CSS
+tagName#id
+
+<input class="input r4 wide mb16 mt8 username" type="email" value="" name="username" id="username" style="display: block;">
+input#username
+
+Another sytax for CSS
+tagName.classname
+
+input.inputField:nth-child(3)
+
+Regular expression
+
+//tagName[contains(@attribute,'value')] - for xpath
+
+<input class="inputField medium" type="text">
+
+//input[contains(@classname,'medium')]
+
+tagName[Attribute*='value'] - for css regula expression
+<input class="input r4 wide mb16 mt8 username" type="email" value="" name="username" id="username" style="display: block;">
+input[type*='email']
+
+
+
+<a href="https://mail.rediff.com/cgi-bin/login.cgi" title="Already a user? Sign in">Sign in</a>
+CSS Path: a[title*='Sign in']
+<input type="text" id="login1" maxlength="30" name="login" value="" style="_width: 243px;" tabindex="1">
+//input[contains(@id,'login1')]
+<input type="password" id="password" name="passwd" value="" style="_width: 243px;" tabindex="2">
+//input[@id='password']
+
+input#password
+
+Parent -child xpath relationship:
+
+//form[@action='/search']/div[2]/input --> Search box on google.com
+
+//div[@class='gb_Q gb_R']
+
+//section/div/div/div/div/ul/li[2]  ABSOLUTE PATH --> ClickAcademy
+
+.//*[@id='tablist1-tab1']/following-sibling::li[2] ->how to travers to sibling element using XPath | RELATIVE XPATH
+
+.//*[@id='tablist1-tab1']/parent::ul    ->How to traverse back to parent element from child element using XPath            
+
+
+Text attribute to find elements:
+//*[text()=' Testing '] _> only when you don't have attributes in code
+
+
+<span class="gwt-InlineLabel">Business directory</span>
+
+//ul[@class='horizontalMenuContent']/li[2]/a/span
+
+.autoCompleteFieldContainer > input:nth-child(1)
+/html/body/div[3]/div[3]/div/div/div[2]/div[2]/div[2]/div/div/div[1]/div/a[3]
