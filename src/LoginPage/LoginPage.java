@@ -2,7 +2,10 @@ package LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +19,7 @@ public class LoginPage {
 		WebDriver driver = new ChromeDriver();
 		// WebDriver driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
 		driver.get("https://demo.cyclos.org/#login");
 
@@ -39,10 +42,58 @@ public class LoginPage {
 		driver.findElement(By.xpath("//div[@class='dashboardContainer']/div/a[3]")).click();
 		
 		//fill the mandatory fileds with valid data and click on Submit button
+	/*	WebElement toDropdown =driver.findElement(By.xpath("//div[@class='selectionField']/div[2]/img"));
+		toDropdown.click();*/
 		
-
-		WebElement toDropdown =driver.findElement(By.xpath("//div[@class='selectionField']/div[2]/img"));
-		toDropdown.click();
+		
+		//fill the User in quick search
+		
+		driver.findElement(By.xpath("//div[@class='autoCompleteFieldContainer']/input")).sendKeys("demo");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//div[@class='autoCompleteFieldContainer']/input")).sendKeys(Keys.DOWN);
+		driver.findElement(By.xpath("//div[@class='autoCompleteFieldContainer']/input")).sendKeys(Keys.DOWN);
+		driver.findElement(By.xpath("//div[@class='autoCompleteFieldContainer']/input")).sendKeys(Keys.DOWN);
+		
+		WebElement userQckSrch = driver.findElement(By.xpath("//div[@class='autoCompleteFieldContainer']/input"));
+		System.out.println(userQckSrch.getText());
+		
+		
+		//javascript DOM can extract hidden elements
+		//because Selenium cannot identify hidden elements - (ajax implementation)
+		//investigate the properties of object if it have any hidden text 
+		
+		//JavascriptExecutor
+		JavascriptExecutor js =(JavascriptExecutor)driver;
+		
+		((JavascriptExecutor) driver).executeScript("arguments[0].className='autoCompleteFieldContainer']/input'",userQckSrch);
+		
+		
+		//fill the amount and press Submit button
+		
+		/*driver.findElement(By.cssSelector("input.inputField.large.rightAligned")).sendKeys("200");
+		driver.findElement(By.cssSelector("textarea.inputField.full")).sendKeys("This is just a text");
+		*/
+		Thread.sleep(2000);
+		/*
+		System.out.println(driver.findElement(By.xpath("//button[@type='button']")).isDisplayed());
+		driver.findElement(By.xpath("//div[@class='actionButtonText']")).click();
+		
+		
+		
+		String PaymentReviewMessageExpected = "Please, review the payment below and click the confirm button";
+		
+		
+		WebElement banner =driver.findElement(By.cssSelector("div.notificationText.notificationText-singleLine"));
+		
+		
+		if (banner.isDisplayed()) {
+			
+			System.out.println("test valid " + banner.getText());
+		}
+		*/
+	
+			}
+		
 		
 		
 			
@@ -52,6 +103,5 @@ public class LoginPage {
 
 		
 
-	}
 
 

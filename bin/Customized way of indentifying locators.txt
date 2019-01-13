@@ -1,0 +1,26 @@
+standard formula for custom xpath:
+_______________________________
+
+//tagname[@attribute='value']
+_______________________________
+
+
+Check in console:
+1.1 $x("//tagname[@attribute='value']")
+1.2 $x("//tagname[@attribute='value' and @attribute2='value']
+1.3 $x("//tagname[@attribute='value' or  @attribute2='value']
+
+Group elements and check by index:
+__________________________
+ $x("(//tagname)[index]"))
+ _________________________
+
+2.1 $x("(//input)[1]"))
+
+Create xpath for dynamic webelements:
+_______________________________________________
+//tagname[starts-with(@attribute,'value')]
+example:$x("//input[starts-with(@id,'email')]")
+//tagname[ends-with(@attribute,'value')]
+//tagname[contains(@attribute,'value')]
+_______________________________________________
